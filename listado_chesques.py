@@ -21,7 +21,10 @@ def handlerSalida(salida):
         procesarArchivo(modo)
         print(filtrarCheques(dni, tipo))
     elif salida == "CSV":
-        # TODO: GENERAR CSV
+        f= open('test,csv','w')
+        writer=csv.writer(f)
+        writer.writerow(header)
+        writer.writerow()
         modo = "a"
         procesarArchivo(modo)
     else: 
