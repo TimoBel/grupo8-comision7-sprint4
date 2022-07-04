@@ -58,11 +58,13 @@ def filtrarCheques(dni, tipo):
 
     return filtradoPorDniYTipo
 
-    
-# TODO: FALTA HACER ESTE CHEQUEO
 def chequearMismoNumeroCheque(cheques):
-    # filter(lambda cheque: cheque["NroCheque"] )
-    return True
+    listaNroCheques = []
+    for cheque in cheques:
+        listaNroCheques.append(cheque["NroCheque"])
+    if(len(listaNroCheques) != len(set(listaNroCheques))):
+        print("ERROR: Numeros de cheques repetidos para un mismo DNI")
+        exit()
 
 def filtrarPorDni(cheque):
     if (cheque["DNI"] == dni):
@@ -97,7 +99,7 @@ elif len(entrada) == 6:
     rango = entrada[5]
 
 handlerSalida(salida)
-# test.csv, 11580999, PANTALLA, 123, 123
+# test.csv, 11580999, PANTALLA, EMITIDO
 
 
 
