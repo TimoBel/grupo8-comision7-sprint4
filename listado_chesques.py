@@ -18,12 +18,12 @@ def handlerSalida(salida):
     if salida == "PANTALLA":
         modo = "r"
         chequearExistencia(nombre)
-        procesarArchivo(modo)
+        procesarArchivo(nombre, modo)
         print(filtrarCheques(dni, tipo))
     elif salida == "CSV":
         # TODO: GENERAR CSV
         modo = "a"
-        procesarArchivo(modo)
+        procesarArchivo(nombre, modo)
     else: 
         print("Tipo de salida no valida")
         exit()
@@ -33,8 +33,8 @@ def chequearExistencia(nombreArchivo):
         print("El archivo no existe")
         exit()
 
-def procesarArchivo(modo):
-    with open("test.csv", "r") as file:
+def procesarArchivo(nombre, modo):
+    with open(nombre, modo) as file:
         fileCSV = csv.reader(file)
         header = next(fileCSV)
         for row in fileCSV:
